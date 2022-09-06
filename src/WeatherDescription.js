@@ -37,16 +37,6 @@ export default function WeatherDescription() {
           </div>
         </div>
       </div>
-      <div class="container" id="forecast"></div>
-      <span id="sourse-code">
-        <a
-          href="https://github.com/Mariel-r/Weather-application"
-          target="_blank"
-        >
-          Open-source code{" "}
-        </a>
-        , by M Rezaei
-      </span>
     </>
   );
 }
