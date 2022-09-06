@@ -1,13 +1,13 @@
-import "./App.css";
+import WeatherSearch from "./Search.js";
+import WeatherInfo from "./WeatherInfo.js";
+import WeatherDescription from "./WeatherDescription.js";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>heelooo</h1>
-      </header>
-    </div>
+    <>
+      <WeatherSearch />
+      <WeatherInfo />
+      <WeatherDescription />
+    </>
   );
 }
-
-export default App;
