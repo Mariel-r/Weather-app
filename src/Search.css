@@ -57,17 +57,6 @@ p {
   height: 120px;
 }
 
-#forecast {
-  font-weight: bold;
-  text-align: center;
-  color: rgb(90, 105, 135);
-  height: 80px;
-  width: 600px;
-
-  position: relative;
-  top: -120px;
-}
-
 #currentButton {
   background-color: #ec6e4c;
   color: #fff;
@@ -124,8 +113,12 @@ p {
 #sourse-code {
   display: block;
   margin: 0 auto;
-  padding-top: 10px;
-
+  padding-top: 30px;
+  padding-right: 170px;
   font-size: 80%;
   font-weight: 400;
+}
+
+.description {
+  padding-bottom: 20px;
 }
