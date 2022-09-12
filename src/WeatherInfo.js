@@ -21,15 +21,15 @@ export default function WeatherInfo(props) {
             <div class="col">
               <img
                 id="icon"
-                src="	http://openweathermap.org/img/wn/04d@2x.png"
-                alt="cloudy"
+                src={props.data.iconUrl}
+                alt={props.data.description}
+                width="100"
               />
             </div>
             <div class="col">
-              <span id="temperature"> 16 </span>
+              <span id="temperature">{Math.round(props.data.temperature)}</span>
               <span class="units" id="celsius-link">
-                {" "}
-                °C{" "}
+                °C
               </span>
             </div>
             <div class="col">
@@ -43,7 +43,8 @@ export default function WeatherInfo(props) {
                   </strong>
                 </li>
                 <li>
-                  Wind: <span id="wind">{props.data.wind}</span> km/h
+                  Wind: <span id="wind">{Math.round(props.data.wind)}</span>{" "}
+                  km/h
                 </li>
               </ul>
             </div>
