@@ -96,7 +96,7 @@ p {
   display: block;
   position: relative;
   top: -79px;
-  right: 3px;
+  right: -5px;
 }
 
 #forecast {
@@ -113,7 +113,7 @@ p {
   display: block;
   margin: 0 auto;
   padding-top: 30px;
-  padding-right: 170px;
+
   font-size: 80%;
   font-weight: 400;
 }

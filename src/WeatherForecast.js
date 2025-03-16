@@ -1,89 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Search.css";
+import WeatherForecastFinal from "./WeatherForecastFinal";
+import axios from "axios";
 
-export default function WeatherForecast() {
-  return (
-    <div class="container" id="forecast">
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <div class="col">
-          <div class="p-3 border bg-light">
-            Tue
-            <br />
-            <img
-              src="http://openweathermap.org/img/wn/03d@2x.png"
-              alt=""
-              width="42"
-            />
-            <br />
-            30°/18°
-          </div>
-        </div>
+export default function WeatherForecast(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState(null);
 
-        <div class="col">
-          <div class="p-3 border bg-light">
-            Wed
-            <br />
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt=""
-              width="42"
-            />
-            <br />
-            31°/18°
-          </div>
-        </div>
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
-        <div class="col">
-          <div class="p-3 border bg-light">
-            Thu
-            <br />
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt=""
-              width="42"
-            />
-            <br />
-            30°/19°
-          </div>
-        </div>
+  function handleForecastResponse(response) {
+    setForecast(response.data.daily);
+    setLoaded(true);
+  }
 
-        <div class="col">
-          <div class="p-3 border bg-light">
-            Fri
-            <br />
-            <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt=""
-              width="42"
-            />
-            <br />
-            28°/19°
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3 border bg-light">
-            Sat
-            <br />
-            <img
-              src="http://openweathermap.org/img/wn/01d@2x.png"
-              alt=""
-              width="42"
-            />
-            <br />
-            26°/19°
-          </div>
-        </div>
-      </div>
-      <small id="sourse-code">
-        <a
-          href="https://github.com/Mariel-r/Weather-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open-source code{" "}
-        </a>
-        , by M Rezaei
-      </small>
-    </div>
-  );
+  if (loaded) {
+    return (
+      <>
+        {forecast.map(function(day, index) {
+          if (index < 5) {
+            return (
+              <div class="container" id="forecast">
+                <WeatherForecastFinal data={day} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </>
+    );
+  } else {
+    const apiKey = "f340eddba0a7afe617246ae948554e4e";
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinates.lat}&lon=${props.coordinates.lon}&appid=${apiKey}&units=metric`;
+
+    axios.get(url).then(handleForecastResponse);
+
+    return null;
+  }
 }

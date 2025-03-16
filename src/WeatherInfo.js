@@ -47,16 +47,6 @@ export default function WeatherInfo(props) {
             </div>
           </div>
         </div>
-        <small id="sourse-code">
-          <a
-            href="https://github.com/Mariel-r/Weather-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open-source code{" "}
-          </a>
-          , by M Rezaei
-        </small>
       </div>
     </>
   );

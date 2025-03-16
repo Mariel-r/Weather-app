@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Search.css";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -13,6 +14,7 @@ export default function Weather(props) {
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
+      coordinates: response.data.coord,
       description: response.data.weather[0].description,
       iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
@@ -59,6 +61,17 @@ export default function Weather(props) {
             </div>
           </form>
           <WeatherInfo data={weatherData} />
+          <WeatherForecast coordinates={weatherData.coordinates} />
+          <small id="sourse-code">
+            <a
+              href="https://github.com/Mariel-r/Weather-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open-source code{" "}
+            </a>
+            , by M Rezaei
+          </small>
         </div>
       </div>
     );
